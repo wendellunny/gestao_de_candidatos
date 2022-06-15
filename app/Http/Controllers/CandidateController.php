@@ -23,7 +23,7 @@ class CandidateController extends Controller
      */
     public function create()
     {
-        return view('app.content.candidate-registration.stage-1');
+        return view('app.content.candidate-registration.stages');
     }
 
     /**
