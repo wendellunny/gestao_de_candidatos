@@ -5,15 +5,15 @@
     <fieldset class="col-12" id="stage-1">
         <div class="form-group">
             <label for="">Nome</label>
-            <input class="form-control" type="text">
+            <input type="text" class="form-control" name="name" id="name" />
         </div>
         <div class="form-group">
             <label for="">Email</label>
-            <input class="form-control" type="text">
+            <input type="email" class="form-control" name="email" id="email" />
         </div>
         <div class="form-group">
             <label for="">Telefone</label>
-            <input class="form-control" type="text">
+            <input  type="text" class="form-control" name="phone" id="phone" />
         </div>
     </fieldset>
 
@@ -42,6 +42,6 @@
             <input class="form-control" type="text">
         </div>
     </fieldset>
-    <button class="btn btn-primary">Próximo</button>
+    <button class="btn btn-primary" type="button" id="button-prox-1">Próximo</button>
 </form>
 @endsection

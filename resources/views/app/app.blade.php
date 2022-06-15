@@ -24,5 +24,6 @@
       <main class="container">
           @yield('content')
       </main>
+      <script src="{{asset('js/stages.js')}}"></script>
   </body>
 </html>
