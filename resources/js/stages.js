@@ -1,5 +1,5 @@
 const buttonProx = document.querySelector('#button-prox');
-
+const buttonSubmit = document.querySelector('#button-submit');
 const inputEmail = document.querySelector('input#email');
 const inputPhone = document.querySelector('input#phone');
 const fieldsets = {
@@ -39,6 +39,8 @@ function changeStageTwo(){
     fieldsets.stage2.classList.add('d-none');
     fieldsets.stage3.classList.remove('d-none');
     buttonProx.dataset.stage= '3';
+    buttonProx.classList.add('d-none');
+    buttonSubmit.classList.remove('d-none');
 }
 
 

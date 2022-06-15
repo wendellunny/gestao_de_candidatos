@@ -4,6 +4,7 @@ var __webpack_exports__ = {};
   !*** ./resources/js/stages.js ***!
   \********************************/
 var buttonProx = document.querySelector('#button-prox');
+var buttonSubmit = document.querySelector('#button-submit');
 var inputEmail = document.querySelector('input#email');
 var inputPhone = document.querySelector('input#phone');
 var fieldsets = {
@@ -43,6 +44,8 @@ function changeStageTwo() {
   fieldsets.stage2.classList.add('d-none');
   fieldsets.stage3.classList.remove('d-none');
   buttonProx.dataset.stage = '3';
+  buttonProx.classList.add('d-none');
+  buttonSubmit.classList.remove('d-none');
 }
 
 buttonAddExperience.addEventListener('click', function () {

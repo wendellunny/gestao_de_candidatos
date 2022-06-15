@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CandidateRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class CandidateController extends Controller
@@ -32,9 +34,10 @@ class CandidateController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CandidateRequest $request)
     {
-        //
+        $dataForm = $request->validated();
+        User::create($dataForm);
     }
 
     /**

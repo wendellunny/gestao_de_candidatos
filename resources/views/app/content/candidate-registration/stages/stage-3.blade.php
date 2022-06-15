@@ -5,10 +5,10 @@
     </div>
     <div class="form-group">
         <label for="">Senha</label>
-        <input class="form-control" type="text">
+        <input class="form-control" type="password">
     </div>
     <div class="form-group">
         <label for="">Confirme a senha</label>
-        <input class="form-control" type="text">
+        <input class="form-control" type="password">
     </div>
 </fieldset>

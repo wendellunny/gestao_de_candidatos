@@ -9,5 +9,8 @@
     <button class="btn btn-primary" type="button" id="button-prox" data-stage='1'>
         Próximo
     </button>
+    <button class="btn btn-primary d-none"  id="button-submit" >
+        Concluído
+    </button>
 </form>
 @endsection
