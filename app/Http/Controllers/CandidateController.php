@@ -15,7 +15,8 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        $candidates = User::orderBy('id','desc')->get();
+        return view('app.content.candidate-list.candidates',compact('candidates'));
     }
 
     /**
@@ -83,7 +84,8 @@ class CandidateController extends Controller
      */
     public function edit($id)
     {
-        //
+        $candidate = User::findOrFail($id);
+        return view('app.content.candidate-edit.candidate-edit',compact('candidate'));
     }
 
     /**
@@ -95,7 +97,9 @@ class CandidateController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = User::find($id);
+        $user->update($request->all());
+        return redirect()->back();
     }
 
     /**
@@ -106,6 +110,10 @@ class CandidateController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $user = User::find($id);
+        $user->academicFormations()->detach();
+        $user->professionalExperiences()->detach();
+
+        return redirect()->back();
     }
 }
