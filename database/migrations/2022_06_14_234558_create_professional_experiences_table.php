@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->text('description')->nullable();
-            $table->date('inital_date');
+            $table->date('initial_date');
             $table->date('final_date')->nullable();
             $table->tinyInteger('is_current')->default(0);
             $table->foreignIdFor(User::class);

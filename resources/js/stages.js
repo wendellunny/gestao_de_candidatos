@@ -49,33 +49,35 @@ buttonAddExperience.addEventListener('click',function(){
 })
 
 function addProfessionalExperiencesInputs(){
-    let scope = document.querySelector('#professional-experience-scope');
+    let scope = document.querySelector('#professional-experience-scope-more');
     let input = `
     <div id="professional-experience-inputs">
-    <h5>Experiência Profissional</h5>
+        <h5>Experiência Profissional</h5>
         <div class="form-group">
             <label for=""> Título </label>
-            <input type="text" class="form-control" type="text">
+            <input type="text" name="professional_experience_title[]" class="form-control" type="text">
         </div>
         <div class="form-group">
             <label for=""> Descrição </label>
-            <textarea class="form-control" name="description"></textarea>
+            <textarea class="form-control" name="professional_experience_description[]"></textarea>
         </div>
         <div class="form-group">
             <label for=""> Data de Ínicio </label>
-            <input type="date" class="form-control" name="initail_date">
+            <input type="date" class="form-control" name="professional_experience_initial_date[]">
         </div>
         <div class="form-group">
             <label for=""> Atual </label>
-            <input type="checkbox" name="is_current">
+            <input type="checkbox" class="professional_experience_is_current" name="professional_experience_is_current[]" value="1">
+            <input type="hidden" class="professional_experience_is_current_hidden" name = "professional_experience_is_current[]" value="0">
         </div>
         <div class="form-group">
             <label for=""> Data Final </label>
-            <input type="date" class="form-control" name="final_date"/>
+            <input type="date" class="form-control" name="professional_experience_final_date[]"/>
         </div>
     </div>
     `;
-    scope.innerHTML += input;
+    let element = new DOMParser().parseFromString(input,'text/html');
+    scope.appendChild(element.body.firstChild);
 }
 
 buttonAddFormation.addEventListener('click',function(){
@@ -83,32 +85,100 @@ buttonAddFormation.addEventListener('click',function(){
 })
 
 function addAcademicFormationInputs(){
-    let scope = document.querySelector('#academic-formation-scope');
+    
+    let scope = document.querySelector('#academic-formation-scope-more');
     let input = `
-    <div id="academic-formation-inputs">
-    <h5>Formação Acadêmica</h5>
-        <div class="form-group">
-            <label for=""> Título </label>
-            <input type="text" class="form-control" type="text">
-        </div>
-        <div class="form-group">
-            <label for=""> Descrição </label>
-            <textarea class="form-control" name="description"></textarea>
-        </div>
-        <div class="form-group">
-            <label for=""> Data de Ínicio </label>
-            <input type="date" class="form-control" name="initail_date">
-        </div>
-        <div class="form-group">
-            <label for=""> Atual </label>
-            <input type="checkbox" name="is_current">
-        </div>
-        <div class="form-group">
-            <label for=""> Data Final </label>
-            <input type="date" class="form-control" name="final_date"/>
+    <div id="academic-formation-scope">
+        <div id="academic-formation-inputs">
+            <h5>Formação Acadêmica</h5>
+            <div class="form-group">
+                <label for=""> Título </label>
+                <input type="text" class="form-control" name="academic_formation_title[]" type="text">
+            </div>
+            <div class="form-group">
+                <label for=""> Descrição </label>
+                <textarea class="form-control" name="academic_formation_description[]"></textarea>
+            </div>
+            <div class="form-group">
+                <label for=""> Data de Ínicio </label>
+                <input type="date" class="form-control" name="academic_formation_initial_date[]">
+            </div>
+            <div class="form-group">
+                <label for=""> Atual </label>
+                <input type="checkbox" name="academic_formation_is_current[]" value="1">
+                <input type="hidden" value="0" class="academic_formation_is_current_hidden" name = "academic_formation_is_current[]">
+            </div>
+            <div class="form-group">i
+                <label for=""> Data Final </label>
+                <input type="date" class="form-control" name="academic_formation_final_date[]"/>
+            </div>
         </div>
     </div>
     `;
-    scope.innerHTML += input;
+   
+    let element = new DOMParser().parseFromString(input,'text/html');
+    scope.appendChild(element.body.firstChild);
+    loadCheckboxEvent();
 }
 
+function addInputHiddenIsCheckboxUnchecked(){
+
+}
+
+
+addEventListener('load',function(){
+    loadProfessionalExperienceCheckboxEvent();
+    loadAcademicFormationCheckboxEvent();
+});
+
+function loadProfessionalExperienceCheckboxEvent(){
+    let checkbox = document.querySelectorAll('.professional_experience_is_current');
+    console.log(checkbox);
+    checkbox.forEach(element => {
+        element.addEventListener('change',function(event){
+            let element = event.currentTarget;
+            console.log(element.checked);
+            if(element.checked){
+                console.log('entrou')
+                let divParent = element.closest('div');
+                let inputHidden  =  divParent.querySelector('.professional_experience_is_current_hidden');
+                divParent.removeChild(inputHidden);  
+            }else{
+                let divParent = element.closest('div');
+                let inputHidden = document.createElement('input');
+                inputHidden.classList.add('professional_experience_is_current_hidden');
+                inputHidden.value = 0;
+                inputHidden.type='hidden';
+                inputHidden.name='professional_experience_is_current[]';
+                divParent.appendChild(inputHidden);
+            }     
+        });
+    });
+    
+}
+
+function loadAcademicFormationCheckboxEvent(){
+    let checkbox = document.querySelectorAll('.academic_formation_is_current');
+    console.log(checkbox);
+    checkbox.forEach(element => {
+        element.addEventListener('change',function(event){
+            let element = event.currentTarget;
+            console.log(element.checked);
+            if(element.checked){
+                console.log('entrou')
+                let divParent = element.closest('div');
+                let inputHidden  =  divParent.querySelector('.academic_formation_is_current_hidden');
+                divParent.removeChild(inputHidden);  
+            }else{
+                let divParent = element.closest('div');
+                let inputHidden = document.createElement('input');
+                inputHidden.classList.add('academic_formation_is_current_hidden');
+                inputHidden.value = 0;
+                inputHidden.type='hidden';
+                inputHidden.name='academic_formation_is_current[]';
+                divParent.appendChild(inputHidden);
+            }     
+        });
+    });
+    
+}

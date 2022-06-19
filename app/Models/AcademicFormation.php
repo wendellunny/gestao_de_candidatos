@@ -12,7 +12,7 @@ class AcademicFormation extends Model
     protected $fillable = [
         'title',
         'description',
-        'inital_date',
+        'initial_date',
         'final_date',
         'is_current',
     ];
