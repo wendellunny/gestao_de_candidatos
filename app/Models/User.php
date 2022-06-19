@@ -43,6 +43,15 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(function($user){
+            $user->password = bcrypt($user->password);
+        });
+    }
+
     public function academicFormations(){
         return $this->hasMany(AcademicFormation::class);
     }

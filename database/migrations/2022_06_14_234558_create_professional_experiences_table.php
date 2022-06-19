@@ -17,8 +17,8 @@ return new class extends Migration
         Schema::create('professional_experiences', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->text('description');
-            $table->date('inital_date');
+            $table->text('description')->nullable();
+            $table->date('initial_date');
             $table->date('final_date')->nullable();
             $table->tinyInteger('is_current')->default(0);
             $table->foreignIdFor(User::class);
