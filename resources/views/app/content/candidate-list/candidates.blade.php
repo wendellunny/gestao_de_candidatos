@@ -2,7 +2,7 @@
 
 @section('content')
 <div><a href="{{route('candidate.create')}}" class="btn btn-info">Novo Candidato</a></div>
-<table>
+<table class="table">
     <thead>
         <tr>
             <th>Nome</th>
