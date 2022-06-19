@@ -1,7 +1,7 @@
 @extends('app.app')
 
 @section('content')
-<form action="{{route('candidate.store')}}" method="POST" class="row">@csrf
+<form action="{{route('candidate.store')}}" method="POST" class="row p-5">@csrf
     @include('app.content.candidate-registration.stages.stage-1')
     @include('app.content.candidate-registration.stages.stage-2')
     @include('app.content.candidate-registration.stages.stage-3')

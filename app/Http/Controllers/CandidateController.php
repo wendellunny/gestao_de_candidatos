@@ -15,7 +15,8 @@ class CandidateController extends Controller
      */
     public function index()
     {
-        //
+        $candidates = User::orderBy('id','desc')->get();
+        return view('app.content.candidate-list.candidates',compact('candidates'));
     }
 
     /**
