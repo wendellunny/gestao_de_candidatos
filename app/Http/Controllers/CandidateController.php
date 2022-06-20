@@ -39,7 +39,6 @@ class CandidateController extends Controller
      */
     public function store(CandidateRequest $request)
     {
-        // dd($request->all());
         $dataForm = $request->validated();
         $user = User::create($dataForm);
         foreach ($request->professional_experience_title as $key => $value) {
@@ -49,10 +48,8 @@ class CandidateController extends Controller
             $professionalExperience['initial_date'] = $request->professional_experience_initial_date[$key];
             $professionalExperience['is_current'] = $request->professional_experience_is_current[$key];
             $professionalExperience['final_date'] = $request->professional_experience_final_date[$key];
-            // dump($professionalExperience);
             $user->professionalExperiences()->create($professionalExperience);
         }
-        // dd();
 
         foreach ($request->academic_formation_title as $key => $value) {
             $academicFormation = [];
