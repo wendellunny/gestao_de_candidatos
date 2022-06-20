@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\CandidateRequest;
+use App\Models\AcademicFormation;
+use App\Models\ProfessionalExperience;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -111,8 +113,21 @@ class CandidateController extends Controller
     public function destroy($id)
     {
         $user = User::find($id);
-        $user->academicFormations()->detach();
-        $user->professionalExperiences()->detach();
+        $user->academicFormations()->delete();
+        $user->professionalExperiences()->delete();
+        $user->delete();
+        return redirect()->back();
+    }
+
+    public function destroyAcademicFormation($id){
+        $academicFormation = AcademicFormation::find($id);
+        $academicFormation->delete();
+        return redirect()->back();
+    }
+
+    public function destroyProfessionalExperience($id){
+        $professionalExperience = ProfessionalExperience::find($id);
+        $professionalExperience->delete();
 
         return redirect()->back();
     }

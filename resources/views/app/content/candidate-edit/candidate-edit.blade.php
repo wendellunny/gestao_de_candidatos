@@ -61,7 +61,8 @@
                     <td>{{Carbon\Carbon::parse($professionalExperience->initial_date)->format('d/m/Y')}}</td>
                     <td>{{$professionalExperience->is_current ? 'Atual' : Carbon\Carbon::parse($professionalExperience->final_date)->format('d/m/Y')}}</td>
                     <td>
-                        <button class="btn btn-danger">Excluir</button>
+                        <button class="btn btn-danger" onclick="document.querySelector('#professional_experience_form_delete_{{$professionalExperience->id}}').submit()">Excluir</button>
+                        <form method="POST" id="professional_experience_form_delete_{{$professionalExperience->id}}" action="{{route('professional-experience.destroy',$professionalExperience->id)}}">@csrf @method('DELETE')</form>
                     </td>
                 </tr>
             @endforeach
@@ -89,7 +90,8 @@
                     <td>{{Carbon\Carbon::parse($academicFormation->initial_date)->format('d/m/Y')}}</td>
                     <td>{{$academicFormation->is_current ? 'Atual' : Carbon\Carbon::parse($academicFormation->final_date)->format('d/m/Y')}}</td>
                     <td>
-                        <button class="btn btn-danger">Excluir</button>
+                        <button class="btn btn-danger" onclick="document.querySelector('#academic_formation_form_delete_{{$academicFormation->id}}').submit()">Excluir</button>
+                        <form method="POST" id="academic_formation_form_delete_{{$academicFormation->id}}" action="{{route('academic-formation.destroy',$academicFormation->id)}}">@csrf @method('DELETE')</form>
                     </td>
                 </tr>
             @endforeach

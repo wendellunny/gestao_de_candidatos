@@ -25,3 +25,5 @@ Route::get('/dashboard', function () {
 require __DIR__.'/auth.php';
 
 Route::resource('candidate',CandidateController::class);
+Route::delete('academic-formation/{id}',[CandidateController::class, 'destroyAcademicFormation'])->name('academic-formation.destroy');
+Route::delete('professional-experience/{id}',[CandidateController::class, 'destroyProfessionalExperience'])->name('professional-experience.destroy');

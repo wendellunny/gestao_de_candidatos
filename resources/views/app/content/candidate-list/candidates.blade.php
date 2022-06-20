@@ -21,7 +21,8 @@
                 <td>{{$candidate->phone}}</td>
                 <td>
                     <a href="{{route('candidate.edit',$candidate->id)}}" class="btn btn-primary">Editar</a>
-                    <button class="btn btn-danger">Excluir</button>
+                    <button class="btn btn-danger" onclick="document.querySelector('#candidate_delete_form_{{$candidate->id}}').submit()">Excluir</button>
+                    <form id="candidate_delete_form_{{$candidate->id}}" method="POST" action="{{route('candidate.destroy',$candidate->id)}}" style="display:none">@csrf @method('delete')</form>
                 </td>
             </tr>
         @endforeach
